@@ -6,6 +6,7 @@ import './App.css'
 function App() {
 
   const[data,setData]=useState([]);
+  const isBackgroundRed = false;
   let arr=['ram','peter','prasad','mauli','ram','mauli','prasad','prasad']
   // let count=0;
 
@@ -17,6 +18,22 @@ function App() {
   //   }
   // }
   // console.log(count);
+  function cellColor(status) {
+    switch(status) {
+      case 'count=1': 
+        return 'green';
+      case 'BEGINNING': 
+        return 'blue'
+      case 'count=2': 
+        return 'red'
+      case 'END': 
+        return 'purple'
+      case 'CONCLUSION': 
+        return 'grey'    
+      default: 
+        return ''
+    }
+  }
 
   
 const count = {};
@@ -40,27 +57,36 @@ console.log(count);
    
   },[])
 
+  if(count){
+    
+  }
+
   return (
     <div className="App">
-      
-      {
-        data.map((ele)=>{
-          return(
-            <>
-            <table style={{border:'1px solid black'}}>
+       <table>
             <tr>
               <th>Name</th>
               <th>Count</th>
             </tr>
-            <tr>
+      {
+        data.map((ele)=>{
+          return(
+            <>
+           
+            {/* <tr style={{
+        backgroundColor: isBackgroundRed ? 'red' : 'yellow',
+      }}> */}
+      <tr style={{ color: cellColor(ele.status)}} >
               <td>{ele}</td>
-              <td></td>
+              <td>{count.ram}</td>
             </tr>
-            </table>
             </>
           )
         })
       }
+            </table>
+
+      {/* <h1>{count.ram}</h1> */}
     </div>
   )
 }
